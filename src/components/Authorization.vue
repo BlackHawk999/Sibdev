@@ -13,7 +13,7 @@
       </label>
       <label class="login-area__password" for="">
         Пароль
-        <input type="password"  v-model="password" />
+        <input type="password" v-model="password" />
         <button class="login-area__button" @click="toggleShow">
           <svg
             v-if="showPassword === false"
@@ -95,7 +95,7 @@ export default {
           username: this.username,
           password: this.password,
         }).then(() => {
-          this.$router.push('/')
+          this.$router.push("/");
         });
       } catch (error) {
         console.log(error);
@@ -162,6 +162,12 @@ export default {
       border: 1px solid rgba(23, 23, 25, 0.2);
       box-sizing: border-box;
       border-radius: 10px;
+      outline: none;
+
+      &:focus {
+        border: 1px solid #1390e5;
+        background: #eaf3fa;
+      }
     }
 
     &__button {

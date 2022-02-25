@@ -1,0 +1,39 @@
+.favs {
+  &-change {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+    margin: 36px 0;
+  }
+  
+  &-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__title {
+    font-family: Rob;
+    font-size: 16px;
+    color: #272727;
+    margin-bottom: 5px;
+
+    span {
+      color: red;
+    }
+  }
+  
+  &__input {
+    padding: 12px 15px;
+    border: 1px solid rgba(23, 23, 25, 0.1);
+    border-radius: 10px;
+    outline: none;
+  }
+  
+  &__select {
+    padding: 12px 20px 12px 15px;
+    border: 1px solid rgba(23, 23, 25, 0.1);
+    border-radius: 10px;
+    outline: none;
+  }
+}

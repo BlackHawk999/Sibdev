@@ -2,23 +2,20 @@
   <div class="home">
     <div class="container">
       <div class="home-wrapper">
-        <!-- <Searching /> -->
-        <List />
+        <Intro />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import Searching from "@/components/Searching";
-import List from "@/components/List";
+import Intro from "@/components/intro/Intro";
 
 export default {
   name: "Home",
 
   components: {
-    // Searching,
-    List,
+    Intro,
   },
 };
 </script>

@@ -1,10 +1,10 @@
 <template>
-  <div :class="['card-view', { list: type === 'LIST' }]">
+  <div :class="['card-view', { list: type === 'LIST' }]" @click="openVideo">
     <div class="card-img-wrapper">
       <img
-        v-if="false"
+        v-if="item.thumbnails.high"
         class="card__img"
-        src="https://cdn.pixabay.com/photo/2016/02/10/21/57/heart-1192662__340.jpg"
+        :src="item.thumbnails.high.url"
         alt=""
       />
       <div v-else class="no-img">
@@ -13,10 +13,10 @@
     </div>
     <div class="card-info">
       <h5 class="card-info__title">
-        Как кормить кошку натуралкой | Перечень полезных для кош...
+        {{ item.title }}
       </h5>
       <p class="card-info__text">
-        Ветеринария и Кормление соб... 786 тыс. просмотров
+        {{ item.description }}
       </p>
     </div>
   </div>
@@ -30,7 +30,16 @@ export default {
       type: String,
       default: "DASHBOARD", // LIST | DASHBOARD
     },
+    item: {
+      type: Object,
+      required: true,
+    },
   },
+  methods: {
+    openVideo() {
+      window.open(`https://www.youtube.com/watch?v=${this.item.id}`, '_blank');
+    }
+  }
 };
 </script>
 
@@ -38,21 +47,25 @@ export default {
 .card-view {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &.list {
     flex-direction: row;
 
     .card-img-wrapper {
-      min-width: 160px;
-      min-height: 80px;
+      width: 245px;
+      height: 90px;
       margin-right: 20px;
     }
 
     .card-info {
       align-items: start;
     }
-
-    
   }
 
   .card {
@@ -61,6 +74,7 @@ export default {
       justify-content: center;
       align-items: center;
       min-height: 130px;
+      max-height: 130px;
       margin-bottom: 8px;
       border: 1px solid #7ec3f1;
       border-radius: 5px;
@@ -100,6 +114,25 @@ export default {
         font-family: Rob;
         font-size: 14px;
         color: rgba(23, 23, 25, 0.3);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .card-view {
+    &.list {
+      .card-img-wrapper {
+        height: 70px;
+        margin-right: 15px;
+      }
+
+      .card-info__title {
+        font-size: 10px;
+      }
+
+      .card-info__text {
+        font-size: 10px;
       }
     }
   }
